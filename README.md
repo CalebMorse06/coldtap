@@ -1,6 +1,8 @@
 # RipPay
 
-**Self-custody, in-person XRPL checkout — tap, sign with a Ledger Nano X or Face ID, settle on XRPL in under five seconds.**
+**Testnet proof of concept for self-custody, in-person XRPL checkout — NFC tap, Ledger Nano X or Face ID signing, and XRPL settlement.**
+
+> **Status:** team-built hackathon prototype demonstrated on XRPL testnet. It is not an audited payment processor, custody service, or production financial product; do not use it with mainnet assets or real customer payment data.
 
 ![Native apps](https://img.shields.io/badge/native_apps-iOS_%2B_Android-111)
 ![Hardware](https://img.shields.io/badge/hardware-Ledger_Nano_X-222)
@@ -8,14 +10,26 @@
 [![Network](https://img.shields.io/badge/XRPL-testnet-blue)](https://testnet.xrpl.org)
 [![Sample tx](https://img.shields.io/badge/sample_tx-A9BEDB%E2%80%A606BF1-success)](https://testnet.xrpl.org/transactions/A9BEDB276F0A725DE326B90BA582BC59F7F238B00903E2EECFE730E1F2706BF1)
 
-RipPay is a working in-person XRP checkout built around two real native mobile apps we installed on our own phones. The merchant runs our **native Android HCE app**; the buyer runs our **native iPhone app** and signs with a **Ledger Nano X over BLE** or with **Face ID** gating an on-device `xrpl.Wallet`. The two phones meet over NFC at the counter, the signed Payment settles on XRPL in ~3–5 seconds, and the transaction is cryptographically bound to the checkout session via `InvoiceID`. No custodian. No browser extension. No seed-phrase-on-a-napkin ceremony.
+RipPay is a team-built in-person XRP checkout proof of concept centered on two native mobile apps. The merchant runs a **native Android HCE app**; the buyer runs a **native iPhone app** and signs with a **Ledger Nano X over BLE** or with **Face ID** gating an on-device `xrpl.Wallet`. The two phones meet over NFC at the counter, the signed Payment settles on XRPL testnet, and the transaction is bound to the checkout session via `InvoiceID`.
 
 > **Brand note.** A handful of internal identifiers (`com.coldtap.hce` Android package, `coldtap://` URL scheme, Xcode project `ColdTap`) are preserved across an in-flight rebrand to **RipPay**. They stay put because renaming them mid-demo invalidates signing identity and provisioning profiles. Everything user-facing is RipPay.
 
 ---
 
+## Project status and security scope
+
+This repository documents a hackathon/testnet demonstration of an NFC checkout flow. It deliberately focuses on the transaction path, native-device integration, and session binding—not the operational controls required for a payment product.
+
+- The project has not undergone a security, privacy, or compliance review.
+- Transaction submission and network validation are demonstrated against XRPL testnet.
+- Production deployment would require authenticated merchant operations, abuse controls, monitoring, incident response, key-management review, and domain-specific compliance work.
+- The documentation describes shared team work and does not claim sole authorship for the project.
+
+---
+
 ## Table of contents
 
+- [Project status and security scope](#project-status-and-security-scope)
 - [Why XRPL was the right substrate](#why-xrpl-was-the-right-substrate)
 - [The flow in 30 seconds](#the-flow-in-30-seconds)
 - [XRPL integration](#xrpl-integration)
@@ -30,6 +44,7 @@ RipPay is a working in-person XRP checkout built around two real native mobile a
   - [Repo layout](#repo-layout)
 - [The apps we built](#the-apps-we-built)
 - [Roadmap — what would unlock more XRPL surface area](#roadmap--what-would-unlock-more-xrpl-surface-area)
+- [License](#license)
 - [Links](#links)
 
 ---
@@ -286,6 +301,10 @@ RipPay today uses the core Payment pathway deeply, but there's more XRPL we coul
 - **Devnet AMM integration** — swap XRP for a stablecoin at the moment of checkout so buyers can pay in any on-XRPL asset.
 
 ---
+
+## License
+
+No license file is currently included. Treat the source as all rights reserved until the project owners choose and add a license.
 
 ## Links
 
